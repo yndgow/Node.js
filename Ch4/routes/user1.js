@@ -24,9 +24,7 @@ router.post('/register', async (req, res, next) => {
   // });
   const user1 = new User1(req.body);
   await user1.save();
-
-  console.log(user1);
-
+  // console.log(user1);
   res.redirect('/user1/list');
 });
 
