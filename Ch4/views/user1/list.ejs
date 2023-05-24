@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User1 List</title>
+</head>
+<body>
+    <h3>User1 List</h3>
+    <a href="/user1/register">User1 등록</a>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>휴대폰</th>
+            <th>나이</th>
+            <th>관리</th>
+        </tr>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.uid %></td>
+                <td><%= user.name %></td>
+                <td><%= user.hp %></td>
+                <td><%= user.age %></td>
+                <td colspan="2">
+                    <a href="/user1/modify/<%= user._id%>">수정</a>
+                    <a href="/user1/delete?_id=<%= user._id%>">삭제</a>
+                </td>
+            </tr>
+        <% }) %>
+        
+    </table>
+</body>
+</html>
