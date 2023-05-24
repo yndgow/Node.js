@@ -30,7 +30,7 @@ router.post('/register', async (req, res, next) => {
 
 // 수정
 router.get('/modify/:_id', async (req, res, next) => {
-  const _id = req.params._id;
+  const { _id } = req.params;
   //console.log(_id);
 
   // 아이디값으로 가져오기
@@ -40,19 +40,15 @@ router.get('/modify/:_id', async (req, res, next) => {
 });
 
 router.post('/modify', async (req, res, next) => {
-  const user = req.body;
+  const { _id, name, hp, age } = req.body;
   // console.log(user);
-  await User1.findByIdAndUpdate(user._id, {
-    name: req.body.name,
-    hp: req.body.hp,
-    age: req.body.age,
-  });
+  await User1.findByIdAndUpdate(_id, { name, hp, age });
   res.redirect('/user1/list');
 });
 
 // 삭제
 router.get('/delete', async (req, res, next) => {
-  const _id = req.query._id;
+  const { _id } = req.query;
   //console.log(_id);
   await User1.deleteOne({ _id: _id });
   res.redirect('/user1/list');
